@@ -10,6 +10,7 @@ module.exports = {
       '@context': path.resolve(__dirname, 'src/context'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@apis': path.resolve(__dirname, 'src/apis'),
+      '@routes': path.resolve(__dirname, 'src/routes'),
     },
   },
 }
