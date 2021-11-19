@@ -7,6 +7,8 @@ import SignInPage from '@pages/SignInPage'
 import InputTimePage from '@pages/InputTimePage'
 import CreateRoomPage from '@pages/CreateRoomPage'
 import PendingRoomPage from '@pages/PendingRoomPage'
+import PostPage from '@pages/PostPage'
+import RunningPage from '@pages/RunningPage'
 
 const Router = () => {
   return (
