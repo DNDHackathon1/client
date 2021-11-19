@@ -1,17 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
-import SignUpPage from '@pages/SignUpPage';
+import { PostPage, LoginPage, SignUpPage, RunningPage } from '@pages'
 const Router = () => {
   return (
     <>
       <div>
         <Routes>
-          <Route
-            path="/"
-            exact={true}
-            element={<h1>hello</h1>}
-          ></Route>
+          <Route path="/post" exact={true} element={<PostPage />}></Route>
           <Route path="/signup" exact={true} element={<SignUpPage />}></Route>
+          <Route path="/running" exact={true} element={<RunningPage />}></Route>
 
           {/* <Route path="/signIn" exact></Route> */}
 
