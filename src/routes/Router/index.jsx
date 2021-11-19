@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
-import LoginPage from '@pages/LoginPage'
+import SignUpPage from '@pages/SignUpPage';
 const Router = () => {
   return (
     <>
@@ -9,10 +9,9 @@ const Router = () => {
           <Route
             path="/"
             exact={true}
-            path={'/'}
             element={<h1>hello</h1>}
           ></Route>
-          <Route path="/signup" exact={true} element={<LoginPage />}></Route>
+          <Route path="/signup" exact={true} element={<SignUpPage />}></Route>
 
           {/* <Route path="/signIn" exact></Route> */}
 
