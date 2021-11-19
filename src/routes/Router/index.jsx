@@ -5,8 +5,8 @@ import SignUpPage from '@pages/SignUpPage'
 import SelectProfilePage from '@pages/SelectProfilePage'
 import SignInPage from '@pages/SignInPage'
 import InputTimePage from '@pages/InputTimePage'
-import CreateRoomPage from '../../pages/CreateRoomPage'
-import PendingRoomPage from '../../pages/PendingRoomPage'
+import CreateRoomPage from '@pages/CreateRoomPage'
+import PendingRoomPage from '@pages/PendingRoomPage'
 
 const Router = () => {
   return (
@@ -23,16 +23,18 @@ const Router = () => {
       <Route path="/createRoom" exact={true} element={<CreateRoomPage />} />
       <Route path="/pendingRoom" exact={true} element={<PendingRoomPage />} />
 
+      <Route path="/post" exact={true} element={<PostPage />} />
+      <Route path="/signup" exact={true} element={<SignUpPage />} />
+      <Route path="/running" exact={true} element={<RunningPage />} />
+
       {/* <Route path="/signIn" exact></Route> */}
 
       {/* privateRoute 파일 작성 시 */}
       {/* <PrivateRoute component={컴포넌트} path="/경로" exact />
     
-    */}
-
       {/* <Route path="*" exact>
       
-    </Route> */}
+      </Route> */}
     </Routes>
   )
 }
