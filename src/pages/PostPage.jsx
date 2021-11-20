@@ -63,7 +63,12 @@ const PostPage = () => {
       </Link>
 
       {partyGroup.map(({ title, contents, startTime, endTime }) => (
-        <PostList title={title} content={contents} time={startTime}></PostList>
+        <PostList
+          title={title}
+          content={contents}
+          startTime={startTime}
+          endTime={endTime}
+        ></PostList>
       ))}
     </PostPageContainer>
   )

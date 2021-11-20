@@ -61,6 +61,7 @@ const reducers = {
     return {
       ...state,
       partyGroup : [
+        ...state.partyGroup,
         party,
       ]
     };

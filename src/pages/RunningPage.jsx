@@ -10,6 +10,7 @@ import { useRoutes } from 'react-router'
 
 const RunningPage = () => {
   const { params } = useRoutes()
+
   const style = {
     position: 'absolute',
     top: '40%',
@@ -39,13 +40,15 @@ const RunningPage = () => {
           <Time
             color="white"
             fontSize="40px"
-            startTime={params.startTime}
-            endTime={params.endTime}
+            startTime={params?.startTime}
+            endTime={params?.endTime}
           />
         </Div>
 
         <Div>
-          <ImageContainer></ImageContainer>
+          <ImageContainer>
+            <img src="https://ifh.cc/g/hjDsqI.gif" alt="gif" />
+          </ImageContainer>
         </Div>
 
         <Div>
