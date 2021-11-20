@@ -48,7 +48,7 @@ const PostPage = () => {
 
       <Div>
         <UserText>
-          닉네임님, 목표 2시간
+          minsu님, 목표 2시간
           <p>오늘도 함께 완주 성공해요</p>
         </UserText>
       </Div>

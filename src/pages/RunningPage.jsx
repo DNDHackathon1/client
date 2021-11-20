@@ -10,7 +10,7 @@ import { useRoutes } from 'react-router'
 import { Link } from 'react-router-dom'
 
 const RunningPage = () => {
-  const { params } = useRoutes()
+  //   const { params } = useRoutes()
 
   const style = {
     position: 'absolute',
@@ -39,12 +39,7 @@ const RunningPage = () => {
         </Div>
 
         <Div>
-          <Time
-            color="white"
-            fontSize="40px"
-            startTime={params?.startTime}
-            endTime={params?.endTime}
-          />
+          <Time color="white" fontSize="40px" startTime={'15'} endTime={'17'} />
         </Div>
 
         <Div>
