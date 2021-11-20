@@ -7,6 +7,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { useRoutes } from 'react-router'
+import { Link } from 'react-router-dom'
 
 const RunningPage = () => {
   const { params } = useRoutes()
@@ -28,6 +29,7 @@ const RunningPage = () => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const handleMain = () => {}
 
   return (
     <>
@@ -46,9 +48,7 @@ const RunningPage = () => {
         </Div>
 
         <Div>
-          <ImageContainer>
-            <img src="https://ifh.cc/g/hjDsqI.gif" alt="gif" />
-          </ImageContainer>
+          <img src="https://ifh.cc/g/GKsMUZ.gif" style={{ width: '80%' }}></img>
         </Div>
 
         <Div>
@@ -71,8 +71,11 @@ const RunningPage = () => {
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <Div>
-                <ModalButton>계속 달리기</ModalButton>
-                <ModalButton2 onClick={handleClose}>나가기</ModalButton2>
+                <ModalButton onClick={handleClose}>계속 달리기</ModalButton>
+
+                <Link to="/post">
+                  <ModalButton2 onClick={handleMain}>나가기</ModalButton2>
+                </Link>
               </Div>
             </Typography>
           </Box>
