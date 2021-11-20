@@ -56,7 +56,6 @@ const SignUpPage = () => {
   function onSubmit(value) {
     dispatch({ type: 'CREATE_USER', user: { ...value } })
     reset()
-    // 회원가입 submit function ( axios ) POST
   }
 
   return (

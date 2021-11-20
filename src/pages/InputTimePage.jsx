@@ -75,7 +75,7 @@ const InputTimePage = () => {
           fontSize={24}
         />
       </InputContainer>
-      <Button onSubmit={handleSubmit(onSubmit)} text="캐릭터 선택완료" />
+      <Button onSubmit={handleSubmit(onSubmit)} text="목표 선택완료" />
     </ContainerStyled>
   )
 }
