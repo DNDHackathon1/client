@@ -6,6 +6,7 @@ import Input from '@components/SignUpInput'
 import Button from '@components/Button'
 import Logo from '@assets/logo.png'
 import ErrorText from '@components/ErrorText'
+import { useNavigate } from 'react-router'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -36,6 +37,7 @@ const LabelStyled = styled.label`
 `
 
 const SignUpPage = () => {
+  const navigate = useNavigate()
   const [{ user }, dispatch] = useReducer(reducer, initialState)
 
   const {
@@ -83,17 +85,20 @@ const SignUpPage = () => {
         <LabelStyled htmlFor="password">비밀번호</LabelStyled>
         <Input
           id="password"
+          type="password"
           name="password"
           control={control}
           register={register}
-          secureTextEntry={true}
           placeholder="비밀번호를 입력해주세요."
         />
         {errors.password ? <ErrorText error={errors.password.message} /> : null}
       </FormStyled>
       <Button
         disabled={!isValid}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={() => {
+          handleSubmit(onSubmit)()
+          navigate('/selectProfile')
+        }}
         text="회원가입 완료"
       />
     </ContainerStyled>

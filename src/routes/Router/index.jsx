@@ -9,11 +9,12 @@ import CreateRoomPage from '@pages/CreateRoomPage'
 import PendingRoomPage from '@pages/PendingRoomPage'
 import PostPage from '@pages/PostPage'
 import RunningPage from '@pages/RunningPage'
+import SplashPage from '@pages/SplashPage'
 
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" exact={true} element={<h1>hello</h1>}></Route>
+      <Route path="/" exact={true} element={<SplashPage />}></Route>
       <Route path="/signup" exact={true} element={<SignUpPage />} />
       <Route path="/signin" exact={true} element={<SignInPage />} />
       <Route

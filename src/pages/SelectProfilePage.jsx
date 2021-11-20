@@ -1,18 +1,19 @@
 import React, { useReducer, useState } from 'react'
-import { initialState, reducer } from '../context'
-import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
 import Button from '@components/Button'
+import Logo from '@assets/logo.png'
+import { initialState, reducer } from '../context'
+import { useNavigate } from 'react-router'
 
 const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   min-width: 414px;
   width: 100%;
   height: 100%;
-  color: #fff;
+  background: #fff;
 `
 
 const TitleStyled = styled.span`
@@ -33,9 +34,14 @@ const ImageContainer = styled.div`
 `
 
 const SelectProfilePage = () => {
+  const navigate = useNavigate()
+  const [{ user }, dispatch] = useReducer(reducer, initialState)
   const [image, setImage] = useState('')
 
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    dispatch({ type: 'CREATE_USER', user: { profileImageUrl: image } })
+    navigate('/inputTime')
+  }
 
   const buttonClick = (e) => {
     setImage(e.target.src)
@@ -43,7 +49,7 @@ const SelectProfilePage = () => {
 
   return (
     <ContainerStyled>
-      <div>로고</div>
+      <img width={108} src={Logo} alt="로고" />
       <TitleStyled>나의 캐릭터를 선택해주세요</TitleStyled>
       <ImageContainer>
         <Button2 onClick={buttonClick}>
@@ -63,7 +69,11 @@ const SelectProfilePage = () => {
           <img src="https://ifh.cc/g/4KvMa0.png"></img>
         </Button2>
       </ImageContainer>
-      <Button onSubmit={handleSubmit} text="캐릭터 선택완료" />
+      <Button
+        disabled={image.length === 0}
+        onSubmit={handleSubmit}
+        text="캐릭터 선택완료"
+      />
     </ContainerStyled>
   )
 }
