@@ -6,9 +6,12 @@ import Box from '@mui/material/Box'
 // import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
+import { useRoutes } from 'react-router'
 import { Link } from 'react-router-dom'
 
 const RunningPage = () => {
+  const { params } = useRoutes()
+
   const style = {
     position: 'absolute',
     top: '40%',
@@ -32,15 +35,19 @@ const RunningPage = () => {
     <>
       <RunningPageContainer>
         <Div>
-          <img src={Logo}></img>
+          <img src={Logo} />
         </Div>
 
         <Div>
-          <Time color="white" fontSize="40px" />
+          <Time
+            color="white"
+            fontSize="40px"
+            startTime={params?.startTime}
+            endTime={params?.endTime}
+          />
         </Div>
 
         <Div>
-          {/* <ImageContainer></ImageContainer> */}
           <img src="https://ifh.cc/g/GKsMUZ.gif" style={{ width: '80%' }}></img>
         </Div>
 

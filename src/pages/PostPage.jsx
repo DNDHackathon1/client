@@ -6,6 +6,7 @@ import Fab from '@mui/material/Fab'
 import AddIcon from '@mui/icons-material/Add'
 import Logo from '../images/logo2.png'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const data = [
   {
@@ -26,6 +27,9 @@ const data = [
 ]
 
 const PostPage = () => {
+  const { partyGroup } = useSelector((state) => ({
+    partyGroup: state.LoginReducer.partyGroup,
+  }))
   const createRoomButton = () => {}
 
   return (
@@ -58,8 +62,14 @@ const PostPage = () => {
         </CreateRoomButton>
       </Link>
 
-      {data.map(({ title, content, time }) => (
-        <PostList title={title} content={content} time={time}></PostList>
+      {partyGroup.map(({ title, contents, startTime, endTime }) => (
+        <PostList
+          key={title}
+          title={title}
+          content={contents}
+          startTime={startTime}
+          endTime={endTime}
+        ></PostList>
       ))}
     </PostPageContainer>
   )

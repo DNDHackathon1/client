@@ -1,6 +1,4 @@
 export function setUserInfo({ identity, nickname, password }) {
-  console.log(nickname)
-
   return {
     type: 'setUserInfo',
     payload: { identity, nickname, password },
@@ -19,5 +17,19 @@ export function setGoalTime({ goalTime }) {
     type: 'setGoalTime',
     payload: { goalTime },
   };
+}
+
+export function setParty({ party }) {
+  return {
+    type: 'setParty',
+    payload: { party },
+  };
+}
+
+export function setPartys({ party }) {
+  return {
+    type : 'setPartys',
+    payload : { party }
+  }
 }
 

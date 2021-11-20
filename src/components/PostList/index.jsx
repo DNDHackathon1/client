@@ -2,13 +2,19 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Time from './Time'
 import Button from './Button'
+import { useNavigate } from 'react-router'
 
-const PostList = ({ title, content, time }) => {
+const PostList = ({ title, contents, startTime, endTime }) => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/running', { startTime, endTime })
+  }
+
   return (
-    <PostListContainer>
+    <PostListContainer onClick={() => handleClick()}>
       <div style={{ paddingTop: '10px', paddingLeft: '20px' }}>
         <Title>{title}</Title>
-        <Content>{content}</Content>
+        <Content>{contents}</Content>
       </div>
       <div
         style={{
@@ -17,7 +23,7 @@ const PostList = ({ title, content, time }) => {
           paddingTop: '10px',
         }}
       >
-        <Time color={'#0000F5'} />
+        <Time color={'#0000F5'} startTime={startTime} endTime={endTime} />
         <Button />
       </div>
     </PostListContainer>

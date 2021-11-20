@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const Time = ({ color = '#4f4f4f', fontSize = '26px' }) => {
+const Time = ({ color = '#4f4f4f', fontSize = '26px', startTime, endTime }) => {
   return (
     <TimeContainer color={color} fontSize={fontSize}>
-      19:00 ~ 20:00
+      {startTime}:00 ~ {endTime}:00
     </TimeContainer>
   )
 }

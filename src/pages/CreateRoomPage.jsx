@@ -1,17 +1,21 @@
-import React, { useReducer } from 'react'
-import { initialState, reducer } from '../context'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
 import Button from '@components/Button'
 import Input from '@components/Input'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import Logo from '@assets/logo.png'
+import moment from 'moment'
+import { setPartys } from '../actions'
+import { useNavigate } from 'react-router'
 
 const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   min-width: 414px;
-  padding-top: 30px;
   width: 100%;
   height: 100%;
   background: #fff;
@@ -55,7 +59,12 @@ const TimeInputContainer = styled.div`
 `
 
 const CreateRoomPage = () => {
-  const [{ user }, dispatch] = useReducer(reducer, initialState)
+  const { user } = useSelector((state) => ({
+    user: state.LoginReducer.user,
+  }))
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
 
   const {
     handleSubmit,
@@ -65,44 +74,47 @@ const CreateRoomPage = () => {
   } = useForm({
     mode: 'all',
     defaultValues: {
-      title: '',
-      subTitle: '',
-      startTime: '',
+      contents: '',
       endTime: '',
+      goalTime: user.goalTime,
+      startTime: '',
+      title: '',
+      userId: user.id,
     },
   })
 
-  console.log(errors)
-
-  function onSubmit(value) {
-    console.log(value)
-
-    reset()
-    // 회원가입 submit function ( axios ) POST
+  async function onSubmit(value) {
+    dispatch(
+      setPartys({
+        party: {
+          contents: value.contents,
+          endTime: value.endTime,
+          goalTime: value.goalTime,
+          startTime: value.startTime,
+          title: value.title,
+          userId: value.userId,
+        },
+      }),
+    )
+    navigate('/post')
   }
-
-  // () => dispatch(
-  //     {
-  //         type : "CREATE_USER",
-  //         user : { nickname : '노아' }
-  //     })
 
   return (
     <ContainerStyled>
-      <div>로고</div>
+      <img width={108} src={Logo} alt="로고" />
       <FormStyled>
-        <LabelStyled htmlFor="userId">제목</LabelStyled>
+        <LabelStyled htmlFor="title">제목</LabelStyled>
         <Input
-          id="userId"
-          name="userId"
+          id="title"
+          name="title"
           control={control}
           placeholder="방 제목을 입력해주세요"
           fontSize={24}
         />
-        <LabelStyled htmlFor="password">내용</LabelStyled>
+        <LabelStyled htmlFor="contents">내용</LabelStyled>
         <Input
-          id="password"
-          name="password"
+          id="contents"
+          name="contents"
           control={control}
           placeholder="내용을 입력해주세요."
           fontSize={24}
@@ -137,7 +149,7 @@ const CreateRoomPage = () => {
           </InputContainer>
         </TextInputContainer>
       </TimeInputContainer>
-      <Button onSubmit={handleSubmit(onSubmit)} text="캐릭터 선택완료" />
+      <Button onSubmit={handleSubmit(onSubmit)} text="방 생성하기" />
     </ContainerStyled>
   )
 }
