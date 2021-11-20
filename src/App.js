@@ -1,6 +1,5 @@
 import React from 'react'
 import Router from '@routes/Router'
-import { UserDispatch, initialState } from './context'
 import { Global, css } from '@emotion/react'
 import emotionReset from 'emotion-reset'
 
@@ -26,9 +25,7 @@ const App = () => {
         }
       ]}
       />
-      <UserDispatch.Provider value={initialState}>
         <Router />
-      </UserDispatch.Provider>
     </>
 
   )
