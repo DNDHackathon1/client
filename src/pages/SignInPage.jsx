@@ -32,7 +32,7 @@ const LabelStyled = styled.label`
   margin-top: 54px;
 `
 
-const SignUpPage = () => {
+const SignInPage = () => {
   const [{ user }, dispatch] = useReducer(reducer, initialState)
 
   const {
@@ -74,13 +74,6 @@ const SignUpPage = () => {
           control={control}
           placeholder="아이디를 입력해주세요."
         />
-        <LabelStyled htmlFor="nickname">닉네임</LabelStyled>
-        <Input
-          id="nickname"
-          name="nickname"
-          control={control}
-          placeholder="닉네임을 입력해주세요."
-        />
         <LabelStyled htmlFor="password">비밀번호</LabelStyled>
         <Input
           id="password"
@@ -89,9 +82,9 @@ const SignUpPage = () => {
           placeholder="비밀번호를 입력해주세요."
         />
       </FormStyled>
-      <Button onSubmit={handleSubmit(onSubmit)} text="회원가입 완료" />
+      <Button onSubmit={handleSubmit(onSubmit)} text="로그인" />
     </ContainerStyled>
   )
 }
 
-export default SignUpPage
+export default SignInPage
