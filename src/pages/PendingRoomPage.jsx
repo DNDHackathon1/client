@@ -9,6 +9,8 @@ import Default from '@assets/default_image.png'
 import SubmitCommentSVG from '@assets/submit_comment.svg'
 import { InputBase } from '@mui/material'
 
+import Logo from '@assets/logo_white.png'
+
 const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -128,7 +130,7 @@ const ButtonContainer = styled.div`
 const ScrollViewContainer = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflowy: scroll;
   &:-webkit-scrollbar {
     display: none;
   }
@@ -161,7 +163,7 @@ const PendingRoomPage = () => {
 
   return (
     <ContainerStyled>
-      <div>로고</div>
+      <img src={Logo} alt="로고" />
       <TopContentsContainer>
         <Title>저녁 먹고 유산소</Title>
         <SubTitle>신나는 노래 위주로 들으면서 같이 뛸 분들 와주세요 ~</SubTitle>
@@ -196,7 +198,7 @@ const PendingRoomPage = () => {
         </SubmitCommentContainer>
         <ScrollViewContainer>
           <Item>
-            <img src={Default} alt="프로필" />
+            <img widthsrc={Default} alt="프로필" />
             <Comment>안녕하세요~</Comment>
           </Item>
           <Item>

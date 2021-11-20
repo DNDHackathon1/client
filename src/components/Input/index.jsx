@@ -13,14 +13,7 @@ const InputStyled = styled(InputBase)`
   width: 100%;
 `
 
-const Input = ({
-  name,
-  control,
-  register,
-  placeholder,
-  fontSize = 16,
-  secureTextEntry,
-}) => {
+const Input = ({ name, control, placeholder, fontSize = 16, register }) => {
   return (
     <Controller
       name={name}
@@ -30,7 +23,7 @@ const Input = ({
         <InputStyled
           style={{ fontSize: fontSize }}
           placeholder={placeholder}
-          secureTextEntry={secureTextEntry}
+          inputRef={register}
           {...field}
         />
       )}

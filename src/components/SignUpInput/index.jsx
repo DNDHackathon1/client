@@ -19,7 +19,7 @@ const Input = ({
   register,
   placeholder,
   fontSize = 16,
-  secureTextEntry,
+  type = 'input',
 }) => {
   const identityRegister = register('identity', {
     required: '아이디를 입력해주세요.',
@@ -51,6 +51,7 @@ const Input = ({
       control={control}
       render={({ field }) => (
         <InputStyled
+          type={type}
           style={{ fontSize: fontSize }}
           placeholder={placeholder}
           inputRef={
@@ -62,7 +63,6 @@ const Input = ({
               ? passwordRegister
               : null
           }
-          secureTextEntry={secureTextEntry}
           {...field}
         />
       )}
