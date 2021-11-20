@@ -15,7 +15,7 @@ const ButtonContainer = styled.button`
   height: 44px;
   left: 268px;
   top: 450px;
-  background: #c4c4c4;
+  background: #00071f;
   border-radius: 43px;
   float: right;
   border: none;
@@ -33,6 +33,7 @@ const Text = styled.div`
   left: 287px;
   top: 459px;
 
+  color: #ffffff;
   font-family: Noto Sans CJK KR;
   font-style: normal;
   font-weight: normal;

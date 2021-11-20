@@ -17,7 +17,7 @@ const PostList = ({ title, content, time }) => {
           paddingTop: '10px',
         }}
       >
-        <Time />
+        <Time color={'#0000F5'} />
         <Button />
       </div>
     </PostListContainer>
@@ -30,7 +30,13 @@ const PostListContainer = styled.div`
   height: 145px;
   left: 20px;
   top: 365px;
-  background-color: #e6e6e6;
+  /* background-color: #e6e6e6; */
+  border-radius: 10px;
+
+  background: #ffffff;
+  border: 1.5px solid #f8f8f9;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px rgba(160, 160, 160, 0.5);
   border-radius: 10px;
 `
 const Content = styled.div`
@@ -68,7 +74,7 @@ const Title = styled.div`
 
   /* Gray 2 */
 
-  color: #4f4f4f;
+  color: #333333;
 `
 
 export default PostList

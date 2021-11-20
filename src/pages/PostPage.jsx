@@ -4,6 +4,7 @@ import PostList from '@components/PostList'
 import Avatar from '@mui/material/Avatar'
 import Fab from '@mui/material/Fab'
 import AddIcon from '@mui/icons-material/Add'
+import Logo from '../images/logo2.png'
 const data = [
   {
     title: '런닝 2시간!',
@@ -25,10 +26,11 @@ const data = [
 const PostPage = () => {
   return (
     <PostPageContainer>
-      <Div>로고</Div>
-      <img></img>
+      <Div>
+        <img src={Logo}></img>
+      </Div>
 
-      <Div style={{ marginTop: '20px' }}>
+      <Div>
         <Avatar
           alt="Remy Sharp"
           src="/static/images/avatar/1.jpg"
@@ -65,6 +67,7 @@ const Div = styled.div`
   /* margin: 0 auto; */
   display: flex;
   justify-content: center;
+  padding-top: 30px;
 `
 
 const UserText = styled.div`

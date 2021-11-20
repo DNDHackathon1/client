@@ -6,26 +6,30 @@ import emotionReset from 'emotion-reset'
 
 const App = () => {
   return (
-    <div>
+    <> 
       <Global
-        styles={[
-          css`
-            ${emotionReset}
-          `,
-          {
-            body: {
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-              height: '100%',
-            },
-          },
-        ]}
+        styles={[css`
+          @font-face {
+            font-family: 'Poppins';
+            src : url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+          }
+          ${emotionReset}
+        `,
+        { 
+          body : { 
+            display : 'flex', 
+            justifyContent : 'center', 
+            width : '100%',  
+            height : '100vh',
+          }
+        }
+      ]}
       />
       <UserDispatch.Provider value={initialState}>
         <Router />
       </UserDispatch.Provider>
-    </div>
+    </>
+
   )
 }
 
