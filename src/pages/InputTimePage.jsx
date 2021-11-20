@@ -1,12 +1,13 @@
-import React, { useReducer } from 'react'
-import { initialState, reducer } from '../context'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
 import Button from '@components/Button'
 import Input from '@components/Input'
 import Logo from '@assets/logo.png'
-import { signUpPost } from '../apis/api/user'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { setGoalTime } from '../actions'
+import { useSelector } from 'react-redux'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -37,7 +38,11 @@ const InputContainer = styled.div`
 
 const InputTimePage = () => {
   const navigate = useNavigate()
-  const [{ user }, dispatch] = useReducer(reducer, initialState)
+  const dispatch = useDispatch()
+
+  const { user } = useSelector((state) => ({
+    user: state.LoginReducer.user,
+  }))
 
   const {
     handleSubmit,
@@ -51,11 +56,8 @@ const InputTimePage = () => {
   })
 
   function onSubmit({ goalTime }) {
-    dispatch({
-      type: 'CREATE_USER',
-      user: { goalTime },
-    })
-    // signUpPost(user)
+    dispatch(setGoalTime({ goalTime }))
+
     navigate('/signin')
   }
 

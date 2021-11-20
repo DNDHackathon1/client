@@ -4,6 +4,8 @@ import Button from '@components/Button'
 import Logo from '@assets/logo.png'
 import { initialState, reducer } from '../context'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { setProfile } from '../actions'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -34,12 +36,12 @@ const ImageContainer = styled.div`
 `
 
 const SelectProfilePage = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [{ user }, dispatch] = useReducer(reducer, initialState)
   const [image, setImage] = useState('')
 
   const handleSubmit = () => {
-    dispatch({ type: 'CREATE_USER', user: { profileImageUrl: image } })
+    dispatch(setProfile({ profileImageUrl: image }))
     navigate('/inputTime')
   }
 

@@ -1,5 +1,4 @@
-import React, { useReducer } from 'react'
-import { initialState, reducer } from '../context'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
 import Input from '@components/SignUpInput'
@@ -7,6 +6,8 @@ import Button from '@components/Button'
 import Logo from '@assets/logo.png'
 import ErrorText from '@components/ErrorText'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { setUserInfo } from '../actions'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -38,7 +39,8 @@ const LabelStyled = styled.label`
 
 const SignUpPage = () => {
   const navigate = useNavigate()
-  const [{ user }, dispatch] = useReducer(reducer, initialState)
+
+  const dispatch = useDispatch()
 
   const {
     handleSubmit,
@@ -55,8 +57,9 @@ const SignUpPage = () => {
     },
   })
 
-  function onSubmit(value) {
-    dispatch({ type: 'CREATE_USER', user: { ...value } })
+  function onSubmit({ identity, nickname, password }) {
+    dispatch(setUserInfo({ identity, nickname, password }))
+    navigate('/selectProfile')
     reset()
   }
 
