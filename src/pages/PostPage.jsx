@@ -65,7 +65,16 @@ const PostPage = () => {
   )
 }
 
-const PostPageContainer = styled.div``
+const PostPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 414px;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding-top: 52px;
+`
 
 const CreateRoomButton = styled.button`
   width: 375px;

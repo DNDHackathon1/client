@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
 
 const Button = () => {
   return (
-    <ButtonContainer>
-      <Text>참가하기</Text>
-    </ButtonContainer>
+    <Link to="/running">
+      <ButtonContainer>
+        <Text>참가하기</Text>
+      </ButtonContainer>
+    </Link>
   )
 }
 
