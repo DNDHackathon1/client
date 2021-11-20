@@ -5,6 +5,7 @@ import Avatar from '@mui/material/Avatar'
 import Fab from '@mui/material/Fab'
 import AddIcon from '@mui/icons-material/Add'
 import Logo from '../images/logo2.png'
+
 const data = [
   {
     title: '런닝 2시간!',
@@ -27,7 +28,7 @@ const PostPage = () => {
   return (
     <PostPageContainer>
       <Div>
-        <img src={Logo}></img>
+        <img src={Logo} alt="로고"></img>
       </Div>
 
       <Div>

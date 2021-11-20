@@ -21,15 +21,37 @@ const Input = ({
   fontSize = 16,
   secureTextEntry,
 }) => {
+  const identityRegister = register('identity', {
+    required: '아이디를 입력해주세요.',
+    minLength: {
+      value: 1,
+      message: '아이디를 입력해주세요.',
+    },
+  })
+
+  const passwordRegister = register('password', {
+    required: '비밀번호를 입력해주세요.',
+    minLength: {
+      value: 1,
+      message: '비밀번호를 입력해주세요.',
+    },
+  })
+
   return (
     <Controller
       name={name}
       control={control}
-      rules={{ required: true }}
       render={({ field }) => (
         <InputStyled
           style={{ fontSize: fontSize }}
           placeholder={placeholder}
+          inputRef={
+            name === 'identity'
+              ? identityRegister
+              : name === 'password'
+              ? passwordRegister
+              : null
+          }
           secureTextEntry={secureTextEntry}
           {...field}
         />
