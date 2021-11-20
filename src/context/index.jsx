@@ -2,14 +2,15 @@ import { createContext } from 'react'
 
 const initialState = {
   user: {
-    id: 0,
+    goalTime: 0,
+    identity: '',
     nickname: '',
-    profileImage: '',
+    password: '',
+    profileImageUrl: '',
   },
 }
 
 function reducer(state, action) {
-  console.log(state, action)
   switch (action.type) {
     case 'CREATE_USER':
       return {

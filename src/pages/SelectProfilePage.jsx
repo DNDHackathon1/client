@@ -10,9 +10,9 @@ const ContainerStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   min-width: 414px;
-  margin-top: 30px;
   width: 100%;
-  height: 80%;
+  height: 100%;
+  color: #fff;
 `
 
 const TitleStyled = styled.span`

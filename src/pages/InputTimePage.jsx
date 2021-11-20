@@ -4,16 +4,17 @@ import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
 import Button from '@components/Button'
 import Input from '@components/Input'
+import Logo from '@assets/logo.png'
 
 const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   min-width: 414px;
-  margin-top: 30px;
   width: 100%;
-  height: 80%;
+  height: 100%;
+  background-color: #fff;
 `
 
 const TitleStyled = styled.span`
@@ -22,10 +23,14 @@ const TitleStyled = styled.span`
   width: 50%;
   line-height: 50px;
   white-space: pre-wrap;
+  align-self: flex-start;
+  margin: 5%;
 `
 
 const InputContainer = styled.div`
-  width: 50%;
+  align-self: flex-start;
+  width: 90%;
+  margin: 5%;
 `
 
 const InputTimePage = () => {
@@ -60,10 +65,15 @@ const InputTimePage = () => {
 
   return (
     <ContainerStyled>
-      <div>로고</div>
+      <img width={108} src={Logo} alt="로고" />
       <TitleStyled>하루에 몇시간을 달려볼까요?</TitleStyled>
       <InputContainer>
-        <Input name="time" control={control} placeholder="시간" />
+        <Input
+          name="time"
+          control={control}
+          placeholder="목표 시간을 알려주세요"
+          fontSize={24}
+        />
       </InputContainer>
       <Button onSubmit={handleSubmit(onSubmit)} text="캐릭터 선택완료" />
     </ContainerStyled>

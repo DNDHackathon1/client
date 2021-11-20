@@ -2,26 +2,28 @@ import React, { useReducer } from 'react'
 import { initialState, reducer } from '../context'
 import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
-import Input from '@components/Input'
+import Input from '@components/SignInInput'
 import Button from '@components/Button'
-import reset from 'emotion-reset'
+import Logo from '@assets/logo.png'
+import ErrorText from '@components/ErrorText'
 
 const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   min-width: 414px;
-  margin-top: 30px;
   width: 100%;
-  height: 80%;
+  height: 100%;
+  background: #fff;
+  padding-top: 52px;
 `
 
 const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 90%;
+  margin-bottom: 40%;
 `
 
 const LabelStyled = styled.label`
@@ -30,6 +32,7 @@ const LabelStyled = styled.label`
   align-self: flex-start;
   margin-bottom: 24px;
   margin-top: 54px;
+  color: #003edc;
 `
 
 const SignInPage = () => {
@@ -39,12 +42,12 @@ const SignInPage = () => {
     handleSubmit,
     control,
     reset,
+    register,
     formState: { errors },
   } = useForm({
     mode: 'all',
     defaultValues: {
-      userId: '',
-      nickname: '',
+      identity: '',
       password: '',
     },
   })
@@ -66,21 +69,27 @@ const SignInPage = () => {
 
   return (
     <ContainerStyled>
+      <img width={108} src={Logo} alt="로고" />
       <FormStyled>
-        <LabelStyled htmlFor="userId">아이디</LabelStyled>
+        <LabelStyled htmlFor="identity">아이디</LabelStyled>
         <Input
-          id="userId"
-          name="userId"
+          id="identity"
+          name="identity"
           control={control}
+          register={register}
           placeholder="아이디를 입력해주세요."
         />
+        {errors.identity ? <ErrorText error={errors.identity.message} /> : null}
         <LabelStyled htmlFor="password">비밀번호</LabelStyled>
         <Input
           id="password"
           name="password"
           control={control}
+          register={register}
           placeholder="비밀번호를 입력해주세요."
+          secureTextEntry={true}
         />
+        {errors.password ? <ErrorText error={errors.password.message} /> : null}
       </FormStyled>
       <Button onSubmit={handleSubmit(onSubmit)} text="로그인" />
     </ContainerStyled>
