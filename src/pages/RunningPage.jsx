@@ -6,8 +6,10 @@ import Box from '@mui/material/Box'
 // import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
+import { useRoutes } from 'react-router'
 
 const RunningPage = () => {
+  const { params } = useRoutes()
   const style = {
     position: 'absolute',
     top: '40%',
@@ -34,7 +36,12 @@ const RunningPage = () => {
         </Div>
 
         <Div>
-          <Time color="white" fontSize="40px" />
+          <Time
+            color="white"
+            fontSize="40px"
+            startTime={params.startTime}
+            endTime={params.endTime}
+          />
         </Div>
 
         <Div>

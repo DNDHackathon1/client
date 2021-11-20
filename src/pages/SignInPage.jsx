@@ -7,6 +7,10 @@ import Button from '@components/Button'
 import Logo from '@assets/logo.png'
 import ErrorText from '@components/ErrorText'
 import { signInPost } from '../apis/api/user'
+import axios from 'axios'
+import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { setGoalTime, setProfile, setUserInfo } from '../actions'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -37,7 +41,9 @@ const LabelStyled = styled.label`
 `
 
 const SignInPage = () => {
-  const [{ user }, dispatch] = useReducer(reducer, initialState)
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
 
   const {
     handleSubmit,
@@ -54,12 +60,32 @@ const SignInPage = () => {
   })
 
   async function onSubmit(value) {
-    const response = await signInPost({
-      identity: value.identity,
-      password: value.password,
+    const {
+      data: { data },
+    } = await axios({
+      method: 'post',
+      url: 'http://ec2-3-36-132-160.ap-northeast-2.compute.amazonaws.com:8080/api/users/signin',
+      data: {
+        identity: value.identity,
+        password: value.password,
+      },
     })
-    console.log(response)
-    reset()
+
+    console.log(data)
+
+    dispatch(
+      setUserInfo({
+        identity: data.identity,
+        password: '',
+        nickname: data.nickname,
+        id: data.userId,
+      }),
+    )
+
+    dispatch(setProfile({ profileImageUrl: data.profileImageUrl }))
+    dispatch(setGoalTime({ goalTime: data.goalTime }))
+
+    navigate('/post')
     // 회원가입 submit function ( axios ) POST
   }
 

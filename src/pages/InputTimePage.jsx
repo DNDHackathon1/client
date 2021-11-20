@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { setGoalTime } from '../actions'
 import { useSelector } from 'react-redux'
+import { signUpPost } from '../apis/api/user'
+import axios from 'axios'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -55,10 +57,18 @@ const InputTimePage = () => {
     },
   })
 
-  function onSubmit({ goalTime }) {
-    dispatch(setGoalTime({ goalTime }))
+  async function onSubmit({ goalTime }) {
+    dispatch(setGoalTime({ goalTime: Number(goalTime) }))
+    const { data } = await axios({
+      method: 'post',
+      url: 'http://ec2-3-36-132-160.ap-northeast-2.compute.amazonaws.com:8080/api/users/signup',
+      data: {
+        ...user,
+        goalTime: Number(goalTime),
+      },
+    })
 
-    navigate('/signin')
+    navigate('/signin', { data })
   }
 
   return (
