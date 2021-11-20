@@ -9,6 +9,7 @@ import ErrorText from '@components/ErrorText'
 import { signInPost } from '../apis/api/user'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setGoalTime, setProfile, setUserInfo } from '../actions'
 
@@ -60,6 +61,7 @@ const SignInPage = () => {
   })
 
   async function onSubmit(value) {
+    console.log(value)
     const {
       data: { data },
     } = await axios({
@@ -71,7 +73,7 @@ const SignInPage = () => {
       },
     })
 
-    console.log(data)
+    navigate('/post')
 
     dispatch(
       setUserInfo({
@@ -85,7 +87,6 @@ const SignInPage = () => {
     dispatch(setProfile({ profileImageUrl: data.profileImageUrl }))
     dispatch(setGoalTime({ goalTime: data.goalTime }))
 
-    navigate('/post')
     // 회원가입 submit function ( axios ) POST
   }
 
@@ -113,11 +114,22 @@ const SignInPage = () => {
         />
         {errors.password ? <ErrorText error={errors.password.message} /> : null}
       </FormStyled>
-      <Button
-        disabled={!isValid}
-        onSubmit={handleSubmit(onSubmit)}
-        text="로그인"
-      />
+      <Link
+        to="/post"
+        style={{
+          textDecorationLine: 'none',
+          color: '#0042c1',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <Button
+          disabled={!isValid}
+          onSubmit={handleSubmit(onSubmit)}
+          text="로그인"
+        />
+      </Link>
     </ContainerStyled>
   )
 }

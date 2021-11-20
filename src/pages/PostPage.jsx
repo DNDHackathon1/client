@@ -64,6 +64,7 @@ const PostPage = () => {
 
       {partyGroup.map(({ title, contents, startTime, endTime }) => (
         <PostList
+          key={title}
           title={title}
           content={contents}
           startTime={startTime}

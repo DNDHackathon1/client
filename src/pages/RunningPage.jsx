@@ -33,7 +33,7 @@ const RunningPage = () => {
     <>
       <RunningPageContainer>
         <Div>
-          <img src={Logo}></img>
+          <img src={Logo} />
         </Div>
 
         <Div>
