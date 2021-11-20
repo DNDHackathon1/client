@@ -5,6 +5,8 @@ import Avatar from '@mui/material/Avatar'
 import Fab from '@mui/material/Fab'
 import AddIcon from '@mui/icons-material/Add'
 import Logo from '../images/logo2.png'
+import { Link } from 'react-router-dom'
+
 const data = [
   {
     title: '런닝 2시간!',
@@ -24,6 +26,8 @@ const data = [
 ]
 
 const PostPage = () => {
+  const createRoomButton = () => {}
+
   return (
     <PostPageContainer>
       <Div>
@@ -45,23 +49,63 @@ const PostPage = () => {
         </UserText>
       </Div>
 
-      <Div></Div>
+      <Link
+        to="/createRoom"
+        style={{ textDecorationLine: 'none', color: '#0042c1' }}
+      >
+        <CreateRoomButton onClick={createRoomButton}>
+          방 만들기
+        </CreateRoomButton>
+      </Link>
 
       {data.map(({ title, content, time }) => (
         <PostList title={title} content={content} time={time}></PostList>
       ))}
-
-      <Fab
-        aria-label="add"
-        style={{ position: 'fixed', bottom: '20%', right: '35%' }}
-      >
-        <AddIcon />
-      </Fab>
     </PostPageContainer>
   )
 }
 
 const PostPageContainer = styled.div``
+
+const CreateRoomButton = styled.button`
+  width: 375px;
+  height: 73px;
+  left: 773px;
+  top: 374px;
+
+  background: #f2f6ff;
+  border: 1px solid #81acff;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  font-family: Noto Sans CJK KR;
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  color: #0042c1;
+
+  :hover {
+    background-color: #bdcdf1;
+  }
+`
+const CreateRoomText = styled.div`
+  /* width: 71px;
+  height: 27px; */
+  left: 907px;
+  top: 397px;
+
+  font-family: Noto Sans CJK KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  color: #0042c1;
+`
 
 const Div = styled.div`
   /* margin: 0 auto; */
