@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { initialState, reducer } from '../context'
+import { initialState, reducer, UserDispatch } from '../context'
 import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
 import Input from '@components/SignInInput'
@@ -44,7 +44,7 @@ const SignInPage = () => {
     control,
     reset,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: 'all',
     defaultValues: {
@@ -87,7 +87,11 @@ const SignInPage = () => {
         />
         {errors.password ? <ErrorText error={errors.password.message} /> : null}
       </FormStyled>
-      <Button onSubmit={handleSubmit(onSubmit)} text="로그인" />
+      <Button
+        disabled={!isValid}
+        onSubmit={handleSubmit(onSubmit)}
+        text="로그인"
+      />
     </ContainerStyled>
   )
 }

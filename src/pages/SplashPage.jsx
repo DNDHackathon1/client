@@ -32,20 +32,23 @@ const SplashPage = () => {
   useEffect(() => {
     setTimeout(() => {
       navigate('/signup')
-    }, 2000)
+    }, 5000)
   }, [navigate])
 
   return (
     <ContainerStyled>
       <div
-        style={{ display: 'flex', flexDirection: 'column', marginRight: 50 }}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
       >
-        <img style={{ alignSelf: 'flex-start' }} src={JustDo} alt="그냥해" />
         <img
-          style={{ alignSelf: 'flex-start' }}
-          width={150}
-          src={Logo}
-          alt="로고"
+          style={{ width: 350, alignSelf: 'flex-start' }}
+          src="https://ifh.cc/g/hjDsqI.gif"
+          alt="그냥해"
         />
       </div>
       <Comment>함께 달리는 즐거움</Comment>
