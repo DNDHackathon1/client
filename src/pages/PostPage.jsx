@@ -31,7 +31,7 @@ const PostPage = () => {
   return (
     <PostPageContainer>
       <Div>
-        <img src={Logo}></img>
+        <img src={Logo} alt="로고"></img>
       </Div>
 
       <Div>

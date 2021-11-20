@@ -12,13 +12,13 @@ import { defaultInstance } from '@apis/utils'
 
 // 사용 예시
 // data 필드에 data가 들어가야하면 객체 타입으로 받아온 매게변수를 두번 째 인자에 넣어줌
-// export const postCreate = async (formData) => {
-//   try {
-//     await defaultInstance.post('posts/create', formData)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+export const signUpPost = async (formData) => {
+  try {
+    await defaultInstance.post('/api/users/signup', formData)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 // 사용 예시
 // axios delete 필드는 data타입이 없기 때문에 직접 data타입을 지정해줘야 한다

@@ -11,16 +11,17 @@ const ContainerStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   min-width: 414px;
-  margin-top: 30px;
+  padding-top: 30px;
   width: 100%;
-  height: 80%;
+  height: 100%;
+  background: #fff;
 `
 
 const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 90%;
 `
 
 const TitleStyled = styled.span`

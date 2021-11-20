@@ -18,8 +18,9 @@ const App = () => {
         { 
           body : { 
             display : 'flex', 
-            justifyContent : 'center', 
-            width : '100%',  
+            justifyContent : 'center',
+            width : '100%',
+            backgroundColor : '#F2F2F2',
             height : '100vh',
           }
         }
