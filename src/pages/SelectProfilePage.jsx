@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import { initialState, reducer } from '../context'
 import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
@@ -33,86 +33,53 @@ const ImageContainer = styled.div`
 `
 
 const SelectProfilePage = () => {
-  const [{ user }, dispatch] = useReducer(reducer, initialState)
+  const [image, setImage] = useState('')
 
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm({
-    mode: 'all',
-    defaultValues: {
-      userId: '',
-      nickname: '',
-      password: '',
-    },
-  })
+  const handleSubmit = () => {}
 
-  console.log(errors)
-
-  function onSubmit(value) {
-    console.log(value)
-
-    reset()
-    // 회원가입 submit function ( axios ) POST
+  const buttonClick = (e) => {
+    setImage(e.target.src)
   }
-
-  // () => dispatch(
-  //     {
-  //         type : "CREATE_USER",
-  //         user : { nickname : '노아' }
-  //     })
 
   return (
     <ContainerStyled>
       <div>로고</div>
       <TitleStyled>나의 캐릭터를 선택해주세요</TitleStyled>
       <ImageContainer>
-        <div
-          style={{
-            background: '#DFDFDF',
-            width: 100,
-            borderRadius: 75,
-            height: 100,
-          }}
-        ></div>
-        <div
-          style={{
-            background: '#DFDFDF',
-            width: 100,
-            borderRadius: 75,
-            height: 100,
-          }}
-        ></div>
-        <div
-          style={{
-            background: '#DFDFDF',
-            width: 100,
-            borderRadius: 75,
-            height: 100,
-          }}
-        ></div>
-        <div
-          style={{
-            background: '#DFDFDF',
-            width: 100,
-            borderRadius: 75,
-            height: 100,
-          }}
-        ></div>
-        <div
-          style={{
-            background: '#DFDFDF',
-            width: 100,
-            borderRadius: 75,
-            height: 100,
-          }}
-        ></div>
+        <Button2 onClick={buttonClick}>
+          <img src="https://ifh.cc/g/ufmY4b.png"></img>
+        </Button2>
+        <Button2 onClick={buttonClick}>
+          <img src="https://ifh.cc/g/zhSTJS.png"></img>
+        </Button2>
+        <Button2 onClick={buttonClick}>
+          <img src="https://ifh.cc/g/Nz0vOu.png"></img>
+        </Button2>
+        <Button2 onClick={buttonClick}>
+          <img src="https://ifh.cc/g/x5DPAV.png"></img>
+        </Button2>
+
+        <Button2 onClick={buttonClick}>
+          <img src="https://ifh.cc/g/4KvMa0.png"></img>
+        </Button2>
       </ImageContainer>
-      <Button onSubmit={handleSubmit(onSubmit)} text="캐릭터 선택완료" />
+      <Button onSubmit={handleSubmit} text="캐릭터 선택완료" />
     </ContainerStyled>
   )
 }
+
+const Button2 = styled.button`
+  background-color: white;
+  border: none;
+  width: 100px;
+  border-radius: 75px;
+  height: 100px;
+
+  :hover {
+    background-color: black;
+  }
+
+  color: #333333;
+`
 
 export default SelectProfilePage
