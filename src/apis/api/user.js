@@ -15,6 +15,16 @@ import { defaultInstance } from '@apis/utils'
 export const signUpPost = async (formData) => {
   try {
     await defaultInstance.post('/api/users/signup', formData)
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const signInPost = async (formData) => {
+  try {
+    await defaultInstance.post('/api/users/signin', formData)
+
   } catch (error) {
     console.log(error)
   }

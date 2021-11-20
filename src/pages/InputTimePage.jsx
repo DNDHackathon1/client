@@ -5,6 +5,8 @@ import styled from '@emotion/styled'
 import Button from '@components/Button'
 import Input from '@components/Input'
 import Logo from '@assets/logo.png'
+import { signUpPost } from '../apis/api/user'
+import { useNavigate } from 'react-router'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -34,34 +36,28 @@ const InputContainer = styled.div`
 `
 
 const InputTimePage = () => {
+  const navigate = useNavigate()
   const [{ user }, dispatch] = useReducer(reducer, initialState)
 
   const {
     handleSubmit,
     control,
-    reset,
-    formState: { errors },
+    formState: { isValid },
   } = useForm({
     mode: 'all',
     defaultValues: {
-      time: '',
+      goalTime: '',
     },
   })
 
-  console.log(errors)
-
-  function onSubmit(value) {
-    console.log(value)
-
-    reset()
-    // 회원가입 submit function ( axios ) POST
+  function onSubmit({ goalTime }) {
+    dispatch({
+      type: 'CREATE_USER',
+      user: { goalTime },
+    })
+    // signUpPost(user)
+    navigate('/signin')
   }
-
-  // () => dispatch(
-  //     {
-  //         type : "CREATE_USER",
-  //         user : { nickname : '노아' }
-  //     })
 
   return (
     <ContainerStyled>
@@ -69,13 +65,18 @@ const InputTimePage = () => {
       <TitleStyled>하루에 몇시간을 달려볼까요?</TitleStyled>
       <InputContainer>
         <Input
-          name="time"
+          id="goalTime"
+          name="goalTime"
           control={control}
           placeholder="목표 시간을 알려주세요"
           fontSize={24}
         />
       </InputContainer>
-      <Button onSubmit={handleSubmit(onSubmit)} text="목표 선택완료" />
+      <Button
+        disabled={!isValid}
+        onSubmit={handleSubmit(onSubmit)}
+        text="목표 선택완료"
+      />
     </ContainerStyled>
   )
 }

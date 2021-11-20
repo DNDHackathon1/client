@@ -1,11 +1,12 @@
 import React, { useReducer } from 'react'
-import { initialState, reducer } from '../context'
+import { initialState, reducer, UserDispatch } from '../context'
 import { useForm } from 'react-hook-form'
 import styled from '@emotion/styled'
 import Input from '@components/SignInInput'
 import Button from '@components/Button'
 import Logo from '@assets/logo.png'
 import ErrorText from '@components/ErrorText'
+import { signInPost } from '../apis/api/user'
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ const SignInPage = () => {
     control,
     reset,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: 'all',
     defaultValues: {
@@ -52,20 +53,15 @@ const SignInPage = () => {
     },
   })
 
-  console.log(errors)
-
-  function onSubmit(value) {
-    console.log(value)
-
+  async function onSubmit(value) {
+    const response = await signInPost({
+      identity: value.identity,
+      password: value.password,
+    })
+    console.log(response)
     reset()
     // 회원가입 submit function ( axios ) POST
   }
-
-  // () => dispatch(
-  //     {
-  //         type : "CREATE_USER",
-  //         user : { nickname : '노아' }
-  //     })
 
   return (
     <ContainerStyled>
@@ -84,14 +80,18 @@ const SignInPage = () => {
         <Input
           id="password"
           name="password"
+          type="password"
           control={control}
           register={register}
           placeholder="비밀번호를 입력해주세요."
-          secureTextEntry={true}
         />
         {errors.password ? <ErrorText error={errors.password.message} /> : null}
       </FormStyled>
-      <Button onSubmit={handleSubmit(onSubmit)} text="로그인" />
+      <Button
+        disabled={!isValid}
+        onSubmit={handleSubmit(onSubmit)}
+        text="로그인"
+      />
     </ContainerStyled>
   )
 }
